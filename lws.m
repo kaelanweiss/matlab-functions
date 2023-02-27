@@ -1,6 +1,7 @@
 function out = lws()
 % Function to print contents of workspace in human-readable format sorted
 % by size on disk. Like "ls -lhS".
+% This doesn't work.
 
 D = whos;
 fs = [D.bytes];
