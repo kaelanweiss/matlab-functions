@@ -9,7 +9,7 @@ function [rho,N] = laggedCrossCorr(x1,x2,k)
 %   rho: cross-correlation vector with 2k+1 values centered at zero lag
 %   N: number of value pairs at each lag
 % ---Note: the normalization at the end *(Ni/nx) is hand wavy and I'm not
-% sure why I had to include this to get the tapered
+% sure why I had to include this to get the tapered ends
 
 % preallocate
 rho = NaN(2*k+1,1);
@@ -67,7 +67,7 @@ for i = -k:k
     sig2 = std(x2i,1);
     % calculate cross-correlation
     R = (1/Ni)*(x1i-mu1)'*(x2i-mu2);
-    rho(pos) = R/(sig1*sig2);%*(Ni/nx);
+    rho(pos) = R/(sig1*sig2)*(Ni/nx);
 end
 
 end
