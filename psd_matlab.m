@@ -1,6 +1,21 @@
 function [P,f] = psd_matlab(X,fs)
-% 
+% Calculate the one-sided power spectral density of a vector or columns of 
+% a matrix. A Hanning window is applied to the input before calculating the
+% DFFT. Based off of Matlab's FFT documentation.
 %
+% [P,f] = psd_matlab(X,fs)
+%
+% Input
+%   X: input signal, PSD applied to column(s), must be 1 or 2-dimensional
+%       at the moment
+%   fs: sample frequency
+%
+% Output
+%   P: power spectral density, same size as X
+%   f: frequency vector associated with first dimension of P
+%
+% KJW
+% 6 Mar 2023
 
 % size
 nt = size(X,1);
