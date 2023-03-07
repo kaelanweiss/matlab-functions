@@ -18,3 +18,6 @@ P2 = abs(Y/n);
 P = P2(1:n/2+1,:);
 P(2:end-1,:) = 2*P(2:end-1,:);
 
+% trim to Nyquist
+f = f(1:(ceil(nt/2)+1));
+P = P(1:(ceil(nt/2)+1),:);
