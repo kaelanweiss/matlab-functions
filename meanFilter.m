@@ -12,6 +12,8 @@ function out = meanFilter(in,k,varargin)
 %
 % Output
 %   out: filtered vector
+%
+% THIS NEEDS A REWRITE TO SWITCH TO A TOPHAT CONVOLUTION
 
 N = length(in);
 nan_cutoff = 0.5;

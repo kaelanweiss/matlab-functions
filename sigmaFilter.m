@@ -32,7 +32,8 @@ function [outh, idxh] = helper(inh)
     % calculate variance
     variance = (inh-repmat(mu,repvec)).^2;
     % std
-    sigma = sqrt(sum(variance,dim,'omitnan')/(N-1));
+    %sigma = sqrt(sum(variance,dim,'omitnan')/(N-1));
+    sigma = sqrt(mean(variance,dim,'omitnan'));
     % find bad values
     idxh = sqrt(variance)>nsigma*repmat(sigma,repvec);
     % NaN them out

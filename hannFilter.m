@@ -20,6 +20,7 @@ y0 = in;
 y0(idx_nan) = 0;
 
 % smooth using convolution of normalized Hanning window
+k = k + 2; % hanning window has zeros on both sides, don't want to count those
 w = hann(k)/sum(hann(k));
 y0s = conv(y0,w,'same');
 
@@ -28,7 +29,7 @@ y1 = 1*~idx_nan;
 y1s = conv(y1,w,'same');
 
 % if there are too many nans, keep the nan value
-nan_limit = 0.2;
+nan_limit = 0.3;
 y1s(y1s<nan_limit) = nan;
 
 % normalize convolved input

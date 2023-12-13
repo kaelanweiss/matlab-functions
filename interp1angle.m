@@ -1,6 +1,7 @@
 function vq = interp1angle(x,v,xq,varargin)
 % Function to interpolate angles smoothly over the 360 --> 0 discontinuity.
-% This is basically a complex version of the interp1 function.
+% This is basically a complex version of the interp1 function. Inputs are
+% in radians.
 % 
 % vq = interp1angle(x,v,xq)
 % vq = interp1angle(x,v,xq,method)
