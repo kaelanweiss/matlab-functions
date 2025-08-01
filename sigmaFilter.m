@@ -1,4 +1,4 @@
-function [out, idx] = sigmaFilter(in,nsigma,dim,npasses,varargin)
+function [out, idx] = sigmaFilter(in,nsigma,dim,npass,varargin)
 % Function to find and replace values in a matrix outside of a window
 % defined by standard deviations.
 % [out, idx] = sigmaFilter(in,nsigma,dim,npasses)
@@ -6,7 +6,7 @@ function [out, idx] = sigmaFilter(in,nsigma,dim,npasses,varargin)
 %   in: n-dimensional matrix of values to filter
 %   nsigma: standard deviations outside of which values are filtered
 %   dim: dimensional along which to perform filtering
-%   npasses: number of passes to recursively filter
+%   npass: number of passes to recursively filter
 %   interp_flag: (optional) 
 % Output
 %   out: n-dimensional filtered matrix 
@@ -17,7 +17,7 @@ N = sz(dim);
 idx = false(sz);
 out = in;
 pass = 1;
-while pass <= npasses
+while pass <= npass
     [out, idxh] = helper(out);
     idx = idx | idxh;
     pass = pass + 1;

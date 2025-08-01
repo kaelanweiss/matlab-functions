@@ -1,5 +1,7 @@
 function out = hannFilter(in,k,varargin)
-% Function: Hanning window filter of width k for 1D array in.
+% Function: Hann window filter of width k for 1D array in. If 'omitnan'
+% is chosen, the each output value is normalized according to the number of
+% available data points within the Hanning window of each output value.
 %
 % out = hannFilter(in,k)
 % out = hannFilter(in,k,nanflag)
@@ -11,6 +13,13 @@ function out = hannFilter(in,k,varargin)
 %
 % Output
 %   out: filtered vector
+% 
+% KJW
+% 
+% TO DO:
+%   - rewrite hann() so that it doesn't require the signal processing
+%   toolbox
+%   - n-dimensionalize the code
 
 % find nans
 idx_nan = isnan(in);
@@ -19,8 +28,8 @@ idx_nan = isnan(in);
 y0 = in;
 y0(idx_nan) = 0;
 
-% smooth using convolution of normalized Hanning window
-k = k + 2; % hanning window has zeros on both sides, don't want to count those
+% smooth using convolution of normalized Hann window
+k = k + 2; % hann window has zeros on both sides, don't want to count those
 w = hann(k)/sum(hann(k));
 y0s = conv(y0,w,'same');
 

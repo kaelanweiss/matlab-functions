@@ -3,7 +3,7 @@ function [Y,f,CI,G] = sinFitFT(t,y,varargin)
 % Fourier components. Each Fourier component has the form
 %   a*cos(2*pi*fj*x) + b*sin(2*pi*fj*x)
 % where fj is the Fourier frequency. Coefficients are computed for the
-% Fourier frequencies from fj=0 up to ...
+% Fourier frequencies from fj=0 up to the Nyquist frequency
 %
 % [Y,f,CI,G] = sinFitFT(t,y)
 %
@@ -27,6 +27,10 @@ function [Y,f,CI,G] = sinFitFT(t,y,varargin)
 %
 % 13 Dec 2023
 % KJW
+%
+% Notes:
+% add ability to specify input frequencies
+% add ability to specify fitting method
 
 nan_limit = 0.5;
 
