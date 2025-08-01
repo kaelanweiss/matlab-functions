@@ -14,6 +14,9 @@ function p = plotConfidenceRegion(ax,t,f_low,f_high,clr,alpha,varargin)
 %   alpha: region alpha
 %   dep_axis: (optional) 'x' if confidence intervals applied to the
 %       horizontal axis, default 'y' or vertical axis
+%
+% KJW
+% 31 Jul 2025
 
 % parse varargin
 dep_axis = 'y';
@@ -33,18 +36,28 @@ if isrow(f_low)
     f_high = f_high';
 end
 
-% set up patch vertices
-t_patch = [t; flip(t)];
-f_patch = [f_low; flip(f_high)];
+% find blocks around nan values
+blks = findBlocks(~isnan(f_low+f_high));
+n_blks = size(blks,1);
 
-switch dep_axis
-    case 'y'
-        x_patch = t_patch;
-        y_patch = f_patch;
-    case 'x'
-        x_patch = f_patch;
-        y_patch = t_patch;
+% loop through blocks of good data
+for i = 1:n_blks
+    idx = blks(i,1):blks(i,2);
+    % set up patch vertices
+    t_patch = [t(idx); flip(t(idx))];
+    f_patch = [f_low(idx); flip(f_high(idx))];
+    
+    switch dep_axis
+        case 'y'
+            x_patch = t_patch;
+            y_patch = f_patch;
+        case 'x'
+            x_patch = f_patch;
+            y_patch = t_patch;
+    end
+    
+    % plot
+    p(i) = patch(ax,x_patch,y_patch,clr,'facealpha',alpha,'edgecolor','none');
+    
 end
 
-% plot
-p = patch(ax,x_patch,y_patch,clr,'facealpha',alpha,'edgecolor','none');
