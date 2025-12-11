@@ -36,7 +36,7 @@ end
 
 % DFFT (with taper renormalization)
 Y = fft(H.*X)/sqrt(mean(H.^2,'all'))/n;
-f = fs*(0:(n/2))/n;
+f = fs*(0:(n/2))'/n;
 df = fs/n;
 
 % one-sided PSD

@@ -21,7 +21,7 @@ function p = plotConfidenceRegion(ax,t,f_low,f_high,clr,alpha,varargin)
 % parse varargin
 dep_axis = 'y';
 switch nargin
-    case 1
+    case 7
         if strcmpi(varargin{1},'x')
             dep_axis = 'x';
         end
