@@ -2,8 +2,8 @@ function [x_mean,ci] = bootstrapMean(x,alpha,n,varargin)
 % Function to calculate the mean and bootstrap interval of the mean for a
 % set of estimates. Variance can be specified for variance-weighted mean.
 %
-% [mean,c_low,c_high] = bootstrapMean(x,alpha,n)
-% [mean,c_low,c_high] = bootstrapMean(x,alpha,n,'x_var',x_var)
+% [x_mean,ci] = bootstrapMean(x,alpha,n)
+% [x_mean,ci] = bootstrapMean(x,alpha,n,"x_var",x_var)
 %
 % Input
 %   x: vector of estimates
